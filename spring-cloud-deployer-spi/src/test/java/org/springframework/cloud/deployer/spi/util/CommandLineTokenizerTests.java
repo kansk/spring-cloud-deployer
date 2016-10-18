@@ -19,6 +19,12 @@ public class CommandLineTokenizerTests {
 	}
 
 	@Test
+	public void testSimpleNoTrailingWhitespace() {
+		CommandLineTokenizer tokenizer = new CommandLineTokenizer("arg0 arg1 arg2");
+		Assert.assertEquals(Arrays.asList("arg0", "arg1", "arg2"), tokenizer.getArgs());
+	}
+
+	@Test
 	public void testQuotes() {
 		CommandLineTokenizer tokenizer = new CommandLineTokenizer("  'a   b' cdef gh \"i j\"");
 		Assert.assertEquals(Arrays.asList("a   b", "cdef", "gh", "i j"), tokenizer.getArgs());
